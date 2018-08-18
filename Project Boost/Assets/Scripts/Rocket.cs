@@ -22,6 +22,20 @@ public class Rocket : MonoBehaviour {
         Rotate();
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        switch (collision.gameObject.tag) {
+            case "Friendly":
+                print("OK");
+                break;
+            case "Fuel":
+                print("Fueled up");
+                break;
+            default:
+                print("dead");
+                break;            
+        }
+    }
+
     private void Thrust() {
         float mainPerFrame = mainThrust * Time.deltaTime;
         if (Input.GetKey(KeyCode.Space)) {
